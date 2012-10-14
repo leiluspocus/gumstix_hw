@@ -1,0 +1,60 @@
+Introduction
+-------------------------------------------
+For the project of the ELE437 course, I decided to develop an application using Bluetooth wireless communication. The purpose of the application is to realise a file transfer application on two Gumstix boards: a user can share file with an other user connected on a bluetooth device. The application will be runned on Gumstix board, using the Bluetooth chip available on Gumstix Boards.
+
+Objectives for the application
+-------------------------------------------
+- Safety : The file exchanged mustn't be dangerous for the user (impossibility to exchange scripts or executables)
+- Reliability : The files exchanged must be completely received
+
+Design
+-------------------------------------------
+The principe of the application is similar to the AirDrop feature, available on Mac since OS X Lion : the application is intuitive and allows two users to exchange files through the finder using a simple drag and drop of the file on the receiver.
+// Screen airdrop
+The application will be launched on a terminal, so we won't need to develop a "fancy" interface. However, the application must be understable by users. There will be a menu explaining how can we execute the different functionnalities. \\ 
+There will be at least two main functionnalities in the application :
+- Discovering the reachable devices
+The application will present to the user all the devices that are reachable so that the user can send a message to an other receiver without knowing its mac adress. Indeed, the typing of mac addresses can be complicated. 
+-  Sending a file to a receiver
+Other functionalities that can be developed are the sending of multiple files in a same time, shared folders between two users (when users share a folder and when they are close to each other, the shared folder get synchronized). \\
+
+
+Methods and tools
+-------------------------------------------
+I decided to develop using Java, for two principal reasons:
+- Bluetooth Library
+There is a library well documented for Bluetooth and the community around Java is very strong. 
+- Learning Java
+Java language is very popular. I used it in some Swing projects, I saw all the graphical aspect of Java. I also developed Artificial Agents using Java, and I would like to discover a new face of Java language which is very wide and has many applications.
+The discovery of devices and the sending of files will be facilitated using this library. \\
+The project will be developed using Git in order to keep several versions of the applications. Indeed, the use of a version control systems allows to track the developments and to gradually develop iterations of an application. It facilitates the saving and the tracking of the application.
+
+Implementation Details
+-------------------------------------------
+Concerning the detection of bluetooth devices : // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! \\
+For the first prototype of the project, the application will only detect gumstix devices whose bluetooth chip is activated. Indeed, to be able to receive files, the application must be runned. The code can be generalized to others bluetooth devices because of the use of Java language: as it is multiplatform, the device will only need a JVM.
+
+Concerning the sending of files :
+A sender can transfer different kind of files (no script or executable files for safety reasons), and he must know the time remaining for the send of the file and all the informations related to the sending (time remaining, bytes transfered..).  
+The application will enable the user to send a file to a receiver in two ways :
+  - choosing between the reachable bluetooth devices
+  - typing the mac adress of the other bluetooth device (for advanced users)
+We must also handle the different cases that can happen during the use of the tool. If the file already exists, we save the sent file in a new name (<OldName> + TimeStamp of the date of reception). If there is no more memory on the device of the receiver, the sender must be notified. \\
+
+Concerning the reception of files :
+The receiver will receive the file in a dedicaced folder of his file system. The folder will be created at the first launch of the application.
+
+
+Results expected
+-------------------------------------------
+At the end of the project, the application must respect the objectives of safety and reliability fixed. An user must be able to see the reachable devices and to send him a file. The reception of the files must be handled.
+
+
+Conclusion
+-------------------------------------------
+This project will be a way for me to learn how to program a bluetooth application. Up to now, the networked applications I used to develop was using Wifi Network, the project of Gumstix boards is a real challenge for me because I never used this device.
+
+Sources and external links
+-------------------------------------------
+Bluetooth Library (Java) - http://today.java.net/pub/a/today/2004/07/27/bluetooth.html
+You can follow the evolution of the project on GitHub - http://github.com/leiluspocus/filestix
